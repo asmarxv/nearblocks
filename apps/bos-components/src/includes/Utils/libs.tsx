@@ -298,6 +298,24 @@ export default function () {
     return args;
   };
 
+  function jsonParser(jsonString: string) {
+    try {
+      return JSON.parse(jsonString);
+    } catch (e) {
+      console.error('Error parsing JSON', e);
+      return null;
+    }
+  }
+
+  function jsonStringify(obj: any) {
+    try {
+      return JSON.stringify(obj);
+    } catch (e) {
+      console.error('Error stringifying JSON', e);
+      return null;
+    }
+  }
+
   return {
     getConfig,
     handleRateLimit,
@@ -318,5 +336,7 @@ export default function () {
     convertTimestampToTime,
     mapFeilds,
     fetchData,
+    jsonParser,
+    jsonStringify,
   };
 }
