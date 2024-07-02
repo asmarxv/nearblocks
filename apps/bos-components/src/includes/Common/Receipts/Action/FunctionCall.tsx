@@ -7,7 +7,7 @@ const FunctionCall = (props: TransactionActionInfo) => {
     `${props.ownerId}/widget/includes.Utils.libs`,
   );
 
-  const { t, args, receiver } = props;
+  const { t, args, receiver, network } = props;
 
   function displayArgs(args: any) {
     if (!args || typeof args === 'undefined') return 'The arguments are empty';
@@ -52,6 +52,7 @@ const FunctionCall = (props: TransactionActionInfo) => {
             pretty: modifiedData,
             method: args?.method_name,
             receiver,
+            network,
           }}
         />
       ) : (

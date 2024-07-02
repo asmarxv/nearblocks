@@ -3,10 +3,20 @@ interface Props {
   pretty: string;
   method: string;
   receiver: string;
+  network: string;
 }
-export default function ({ ownerId, pretty, method, receiver }: Props) {
+export default function ({
+  ownerId,
+  pretty,
+  method,
+  receiver,
+  network,
+}: Props) {
+  const { getConfig } = VM.require(`${ownerId}/widget/includes.Utils.libs`);
   const { jsonParser } = VM.require(`${ownerId}/widget/includes.Utils.libs`);
   const { jsonStringify } = VM.require(`${ownerId}/widget/includes.Utils.libs`);
+
+  const config = getConfig && getConfig(network);
 
   const decoded =
     method === 'submit' && receiver.includes('aurora')
@@ -84,7 +94,7 @@ export default function ({ ownerId, pretty, method, receiver }: Props) {
                       <td className="border px-4 py-2">
                         {key === 'hash' ? (
                           <a
-                            href={`https://aurora.exploreblocks.io/tx/${value}`}
+                            href={`${config?.aurorablocksUrl}/tx/${value}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-green-500 dark:text-green-250 hover:no-underline"
@@ -114,7 +124,7 @@ export default function ({ ownerId, pretty, method, receiver }: Props) {
                     {key}:{' '}
                     {key === 'hash' ? (
                       <a
-                        href={`https://aurora.exploreblocks.io/tx/${value}`}
+                        href={`${config?.aurorablocksUrl}/tx/${value}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-green-500 dark:text-green-250 hover:no-underline"

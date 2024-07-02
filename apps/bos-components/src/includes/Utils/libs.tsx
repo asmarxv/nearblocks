@@ -20,6 +20,7 @@ export default function () {
           backendUrl: 'https://api3.nearblocks.io/v1/',
           rpcUrl: 'https://beta.rpc.mainnet.near.org',
           appUrl: 'https://nearblocks.io/',
+          aurorablocksUrl: 'https://aurora.exploreblocks.io',
         };
       case 'testnet':
         return {
@@ -27,6 +28,7 @@ export default function () {
           backendUrl: 'https://api3-testnet.nearblocks.io/v1/',
           rpcUrl: 'https://beta.rpc.testnet.near.org/',
           appUrl: 'https://testnet.nearblocks.io/',
+          aurorablocksUrl: 'https://aurora.exploreblocks.io',
         };
       default:
         return {};
